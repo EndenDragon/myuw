@@ -6,6 +6,7 @@
 <div class="">
 
     <div>
+        <button>Back</button>
         <button>Create Mailing List</button>
     </div>
 
@@ -29,6 +30,7 @@
 {{#if show_advanced }}
 <div class="">
     <div>
+        <button>Back</button>
         <button>Create Mailing Lists</button>
     </div>
 
@@ -44,6 +46,22 @@
     </ul>
 
     <div></div>
+</div>
+{{/if}}
+
+{{#if success }}
+<div class="">
+    <h3>Request submitted</h3>
+
+    <ul class="">
+        <li>An email confirmation will be sent to {{ user_email }}</li>
+        <li>Mailing lists may take up to 24 hours to activate</li>
+    </ul>
+
+    <p><a href="https://itconnect.uw.edu/connect/email/resources/mailman/" target="_blank">Learn more about Mailman email list manager</a></p>
+
+    <button>Done</button>
+
 </div>
 {{/if}}
 
