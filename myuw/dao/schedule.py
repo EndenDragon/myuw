@@ -45,7 +45,7 @@ def _get_schedule(regid, term):
                 courses.sections.append(section)
 
         except DataFailureException as ex:
-            # This will be thrown when mock data does not exist
+            # This will be thrown when there are no transcriptable courses
             pass
 
         return courses
