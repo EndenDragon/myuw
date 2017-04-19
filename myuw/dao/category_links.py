@@ -27,17 +27,18 @@ class Res_Links:
                 category_id = _get_category_id(category)
                 subcategory = row[1]
                 affiliation = row[2]
-                central_url = row[3]
-                central_title = row[4]
-                seattle_url = row[5]
-                seattle_title = row[6]
-                bothell_url = row[7]
-                bothell_title = row[8]
-                tacoma_url = row[9]
-                tacoma_title = row[10]
+                pce = row[3]
+                central_url = row[4]
+                central_title = row[5]
+                seattle_url = row[6]
+                seattle_title = row[7]
+                bothell_url = row[8]
+                bothell_title = row[9]
+                tacoma_url = row[10]
+                tacoma_title = row[11]
 
                 new_tab = False
-                if row[11] == "yes":
+                if row[12] == "yes":
                     new_tab = True
 
                 if len(central_url) > 0:
