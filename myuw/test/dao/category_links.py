@@ -10,7 +10,7 @@ class TestCategoryLinks(TestCase):
 
     def test_get_all_likes(self):
         all_links = Res_Links.get_all_links()
-        self.assertEquals(len(all_links), 155)
+        self.assertEquals(len(all_links), 161)
         val = URLValidator()
         for link in all_links:
             try:
@@ -83,3 +83,6 @@ class TestCategoryLinks(TestCase):
                                                   "",
                                                   affi)
         self.assertEquals(len(links), 6)
+
+    def test_academics_pce(self):
+        pass
