@@ -45,6 +45,7 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=central_url,
                         title=central_title,
+                        pce=pce,
                         affiliation=affiliation,
                         category_name=category,
                         sub_category=subcategory,
@@ -57,6 +58,7 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=seattle_url,
                         title=seattle_title,
+                        pce=pce,
                         affiliation=affiliation,
                         campus=ResCategoryLink.SEATTLE,
                         category_name=category,
@@ -70,6 +72,7 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=bothell_url,
                         title=bothell_title,
+                        pce=pce,
                         affiliation=affiliation,
                         campus=ResCategoryLink.BOTHELL,
                         category_name=category,
@@ -83,6 +86,7 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=tacoma_url,
                         title=tacoma_title,
+                        pce=pce,
                         affiliation=affiliation,
                         campus=ResCategoryLink.TACOMA,
                         category_name=category,
@@ -121,24 +125,31 @@ def _get_links_by_category_and_campus(search_category_id,
         if not link.category_id_matched(search_category_id):
             continue
 
-        if link.all_affiliation() and link.campus_matched(campus):
+        if link.all_affiliation() and link.campus_matched(campus) and\
+                _pce_match(link, affiliations):
             selected_links.append(link)
             continue
 
         if link.campus_matched(campus) and\
-                affiliations["grad"] and link.for_grad():
+                affiliations["grad"] and link.for_grad() and\
+                _pce_match(link, affiliations):
             selected_links.append(link)
             continue
 
         if link.campus_matched(campus) and\
                 affiliations["undergrad"] and\
-                (link.for_undergrad() or link.for_fyp()):
-            selected_links.append(link)
-            continue
-
-        if link.campus_matched(campus) and\
-                affiliations["pce"] and link.for_pce():
+                (link.for_undergrad() or link.for_fyp()) and\
+                _pce_match(link, affiliations):
             selected_links.append(link)
             continue
 
     return selected_links
+
+
+def _pce_match(link, affiliations):
+    """
+    Takes a ResCategoryLink and the user's affiliations, and then returns
+    true if the link should be displayed according to the link and user's
+    PCE status
+    """
+    return (link.for_pce() and affiliations['pce']) or not link.for_pce()

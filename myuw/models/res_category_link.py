@@ -14,6 +14,7 @@ class ResCategoryLink(models.Model):
     url = models.CharField(max_length=150)
     title = models.CharField(max_length=150)
     affiliation = models.CharField(max_length=80, null=True)
+    pce = models.CharField(max_length=80, null=True)
     campus = models.CharField(max_length=8, null=True)
     category_id = models.CharField(max_length=80)
     category_name = models.CharField(max_length=80)
@@ -33,7 +34,7 @@ class ResCategoryLink(models.Model):
         return self.affiliation == ResCategoryLink.GRAD
 
     def for_pce(self):
-        return self.affiliation == ResCategoryLink.PCE
+        return self.pce == ResCategoryLink.PCE
 
     def for_fyp(self):
         return self.affiliation == ResCategoryLink.FYP
