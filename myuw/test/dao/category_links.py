@@ -84,5 +84,22 @@ class TestCategoryLinks(TestCase):
                                                   affi)
         self.assertEquals(len(links), 6)
 
-    def test_academics_pce(self):
+    def test_academics_pce_ugrad(self):
+        """
+
+        """
+        category_id = _get_category_id("Academics")
+        self.assertEquals(category_id, "academics")
+        affi = {"grad": False,
+                "undergrad": True,
+                "pce": True}
+        links = _get_links_by_category_and_campus(category_id,
+                                                  "",
+                                                  affi)
+        self.assertEquals(len(links), 26)
+
+    def test_academics_pce_nm(self):
+        pass
+
+    def test_academics_pce_grad(self):
         pass
