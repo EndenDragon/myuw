@@ -14,7 +14,6 @@ class ResCategoryLink(models.Model):
     url = models.CharField(max_length=150)
     title = models.CharField(max_length=150)
     affiliation = models.CharField(max_length=80, null=True)
-    pce = models.CharField(max_length=80, null=True)
     campus = models.CharField(max_length=8, null=True)
     category_id = models.CharField(max_length=80)
     category_name = models.CharField(max_length=80)
@@ -24,20 +23,26 @@ class ResCategoryLink(models.Model):
     def category_id_matched(self, acategory_id):
         return self.category_id == acategory_id
 
+    def get_affiliation(self):
+        return self.affiliation.split('+')[0]
+
+    def get_pce(self):
+        return self.affiliation.split('+')[1]
+
     def all_affiliation(self):
-        return self.affiliation == ResCategoryLink.ALL
+        return self.get_affiliation() == ResCategoryLink.ALL
 
     def for_undergrad(self):
-        return self.affiliation == ResCategoryLink.UGRAD
+        return self.get_affiliation() == ResCategoryLink.UGRAD
 
     def for_grad(self):
-        return self.affiliation == ResCategoryLink.GRAD
+        return self.get_affiliation() == ResCategoryLink.GRAD
 
     def for_pce(self):
-        return self.pce == ResCategoryLink.PCE
+        return self.get_pce() == ResCategoryLink.PCE
 
     def for_fyp(self):
-        return self.affiliation == ResCategoryLink.FYP
+        return self.get_affiliation() == ResCategoryLink.FYP
 
     def campus_matched(self, acampus):
         return (self.for_all_campus() or

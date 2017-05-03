@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.conf import settings
 from myuw.models import UserNotices
 from myuw.dao.notice import get_notices_by_regid
+from myuw.models.res_category_link import ResCategoryLink
 
 
 class TestUserNotices(TestCase):
@@ -31,6 +32,7 @@ class TestResCategoryLinks(TestCase):
             )
 
         self.assertEquals(link.get_affiliation(), "all")
+        self.assertTrue(link.all_affiliation())
         self.assertEquals(link.get_pce(), "")
 
         link = ResCategoryLink(
@@ -43,6 +45,7 @@ class TestResCategoryLinks(TestCase):
             )
 
         self.assertEquals(link.get_affiliation(), "ugrad")
+        self.assertTrue(link.for_undergrad())
         self.assertEquals(link.get_pce(), "")
 
         link = ResCategoryLink(

@@ -1,4 +1,5 @@
 from myuw.test.models import TestUserNotices
+from myuw.test.models import TestResCategoryLinks
 from myuw.test.academic_events import TestAcademicEvents
 from myuw.test.dao.calendar_mapping import TestCalendarMapping
 from myuw.test.dao.calendar import TestCalendar

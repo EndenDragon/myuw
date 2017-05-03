@@ -94,7 +94,7 @@ class TestCategoryLinks(TestCase):
                 "undergrad": True,
                 "pce": True}
         links = _get_links_by_category_and_campus(category_id,
-                                                  "",
+                                                  "seattle",
                                                   affi)
         self.assertEquals(len(links), 26)
 
