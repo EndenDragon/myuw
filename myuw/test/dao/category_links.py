@@ -10,7 +10,7 @@ class TestCategoryLinks(TestCase):
 
     def test_get_all_likes(self):
         all_links = Res_Links.get_all_links()
-        self.assertEquals(len(all_links), 161)
+        self.assertEquals(len(all_links), 162)
         val = URLValidator()
         for link in all_links:
             try:
@@ -36,6 +36,7 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "studentcampuslife")
         affi = {"grad": False,
                 "undergrad": True,
+                "nm": False,
                 "pce": False}
         links = _get_links_by_category_and_campus(category_id,
                                                   "seattle",
@@ -57,6 +58,7 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "studentcampuslife")
         affi = {"grad": True,
                 "undergrad": False,
+                "nm": False,
                 "pce": False}
         links = _get_links_by_category_and_campus(category_id,
                                                   "seattle",
@@ -78,6 +80,7 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "studentcampuslife")
         affi = {"grad": False,
                 "undergrad": False,
+                "nm": False,
                 "pce": True}
         links = _get_links_by_category_and_campus(category_id,
                                                   "",
@@ -92,6 +95,7 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "academics")
         affi = {"grad": False,
                 "undergrad": True,
+                "nm": False,
                 "pce": True}
         links = _get_links_by_category_and_campus(category_id,
                                                   "seattle",
