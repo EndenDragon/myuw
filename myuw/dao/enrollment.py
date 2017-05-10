@@ -25,6 +25,10 @@ DEFAULT_CLASS_CODE = 6
 logger = logging.getLogger(__name__)
 
 
+def is_nm():
+    return True
+
+
 def get_all_enrollments():
     """
     :return: the dictionary of {Term: Enrollment}

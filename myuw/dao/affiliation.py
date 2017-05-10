@@ -14,7 +14,7 @@ from myuw.dao.gws import is_grad_student, is_student,\
     is_pce_student, is_student_employee, is_employee, is_faculty,\
     is_seattle_student, is_bothell_student, is_tacoma_student,\
     is_staff_employee
-from myuw.dao.enrollment import get_main_campus
+from myuw.dao.enrollment import get_main_campus, is_nm
 from myuw.dao.exceptions import IndeterminateCampusException
 
 
@@ -27,6 +27,7 @@ def get_all_affiliations(request):
     ["student"]: True if the user is currently an UW student.
     ["grad"]: True if the user is currently an UW graduate student.
     ["undergrad"]: True if the user is currently an UW undergraduate student.
+    ["nm"]: True if the user is currently an non-matriculated student.
     ["pce"]: True if the user is currently an UW PCE student.
     ["employee"]: True if the user is currently a uw employee.
     ["stud_employee"]: True if the user is currently a student employee.
@@ -48,6 +49,8 @@ def get_all_affiliations(request):
     if hasattr(request, 'myuw_user_affiliations'):
         return request.myuw_user_affiliations
 
+    # TODO: find a way to prefetch without a circular dependency
+
     is_fyp = False
     try:
         is_fyp = is_thrive_viewer()
@@ -61,6 +64,7 @@ def get_all_affiliations(request):
             "pce": is_pce_student(),
             "stud_employee": is_student_employee(),
             "employee": is_employee(),
+            "nm": is_nm(),
             "fyp": is_fyp,
             "faculty": is_faculty(),
             "seattle": is_seattle_student(),
@@ -180,6 +184,10 @@ request_cached_is_undergrad = _build_cache_method("undergrad",
                                                   is_undergrad_student)
 
 
+request_cached_is_nm = _build_cache_method("nm",
+                                           is_nm)
+
+
 request_cached_is_student = _build_cache_method("student",
                                                 is_student)
 
@@ -219,6 +227,7 @@ def affiliation_prefetch():
             request_cached_is_student_employee,
             request_cached_is_employee,
             request_cached_is_faculty,
+            request_cached_is_nm,
             wrapped_is_seattle,
             wrapped_is_tacoma,
             wrapped_is_bothell,

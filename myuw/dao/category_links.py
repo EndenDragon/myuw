@@ -26,19 +26,20 @@ class Res_Links:
                 category = row[0]
                 category_id = _get_category_id(category)
                 subcategory = row[1]
-                affiliation = row[2]
-                pce = row[3]
-                central_url = row[4]
-                central_title = row[5]
-                seattle_url = row[6]
-                seattle_title = row[7]
-                bothell_url = row[8]
-                bothell_title = row[9]
-                tacoma_url = row[10]
-                tacoma_title = row[11]
+                order = row[2]
+                affiliation = row[3]
+                pce = row[4]
+                central_url = row[5]
+                central_title = row[6]
+                seattle_url = row[7]
+                seattle_title = row[8]
+                bothell_url = row[9]
+                bothell_title = row[10]
+                tacoma_url = row[11]
+                tacoma_title = row[12]
 
                 new_tab = False
-                if row[12] == "yes":
+                if row[13] == "yes":
                     new_tab = True
 
                 if len(central_url) > 0:
@@ -46,6 +47,7 @@ class Res_Links:
                         url=central_url,
                         title=central_title,
                         pce=(pce == "pce"),
+                        order=order,
                         affiliation=affiliation,
                         category_name=category,
                         sub_category=subcategory,
@@ -59,6 +61,7 @@ class Res_Links:
                         url=seattle_url,
                         title=seattle_title,
                         pce=(pce == "pce"),
+                        order=order,
                         affiliation=affiliation,
                         campus=ResCategoryLink.SEATTLE,
                         category_name=category,
@@ -73,6 +76,7 @@ class Res_Links:
                         url=bothell_url,
                         title=bothell_title,
                         pce=(pce == "pce"),
+                        order=order,
                         affiliation=affiliation,
                         campus=ResCategoryLink.BOTHELL,
                         category_name=category,
@@ -87,6 +91,7 @@ class Res_Links:
                         url=tacoma_url,
                         title=tacoma_title,
                         pce=(pce == "pce"),
+                        order=order,
                         affiliation=affiliation,
                         campus=ResCategoryLink.TACOMA,
                         category_name=category,

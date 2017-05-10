@@ -52,7 +52,7 @@ class CategoryLinks(RESTDispatch):
 
         for subcat_group in ordered_subcategories:
             data = sorted(subcategory_data[subcat_group]['links'],
-                          key=lambda k: k['title']
+                          key=lambda k: str(k['order']) + k['title']
                           )
             subcategory_data[subcat_group]['links'] = data
             link_output.append(subcategory_data[subcat_group])
