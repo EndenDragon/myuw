@@ -136,6 +136,12 @@ def _get_links_by_category_and_campus(search_category_id,
             continue
 
         if link.campus_matched(campus) and\
+                affiliations["nm"] and link.for_nm() and\
+                _pce_match(link, affiliations):
+            selected_links.append(link)
+            continue
+
+        if link.campus_matched(campus) and\
                 affiliations["grad"] and link.for_grad() and\
                 _pce_match(link, affiliations):
             selected_links.append(link)

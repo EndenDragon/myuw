@@ -64,7 +64,7 @@ def get_all_affiliations(request):
             "pce": is_pce_student(),
             "stud_employee": is_student_employee(),
             "employee": is_employee(),
-            "nm": is_nm(),
+            "nm": is_nm(request),
             "fyp": is_fyp,
             "faculty": is_faculty(),
             "seattle": is_seattle_student(),

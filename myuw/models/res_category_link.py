@@ -6,6 +6,7 @@ class ResCategoryLink(models.Model):
     UGRAD = 'ugrad'
     GRAD = 'grad'
     PCE = 'pce'
+    NM = 'nm'
     FYP = 'fyp'
     SEATTLE = 'seattle'
     BOTHELL = 'bothell'
@@ -36,6 +37,9 @@ class ResCategoryLink(models.Model):
 
     def for_pce(self):
         return self.pce == ResCategoryLink.PCE
+
+    def for_nm(self):
+        return self.affiliation == ResCategoryLink.NM
 
     def for_fyp(self):
         return self.affiliation == ResCategoryLink.FYP

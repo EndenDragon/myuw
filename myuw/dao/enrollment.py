@@ -25,8 +25,9 @@ DEFAULT_CLASS_CODE = 6
 logger = logging.getLogger(__name__)
 
 
-def is_nm():
-    return True
+def is_nm(request):
+    enrollment = get_current_quarter_enrollment(request)
+    return enrollment.class_level == "NON_MATRIC"
 
 
 def get_all_enrollments():
