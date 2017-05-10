@@ -26,7 +26,11 @@ logger = logging.getLogger(__name__)
 
 
 def is_nm(request):
-    enrollment = get_current_quarter_enrollment(request)
+    try:
+        enrollment = get_current_quarter_enrollment(request)
+    except DataFailureException:
+        return False
+
     return enrollment.class_level == "NON_MATRIC"
 
 

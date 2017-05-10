@@ -88,9 +88,6 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(len(links), 6)
 
     def test_academics_pce_ugrad(self):
-        """
-
-        """
         category_id = _get_category_id("Academics")
         self.assertEquals(category_id, "academics")
         affi = {"grad": False,
@@ -103,7 +100,25 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(len(links), 26)
 
     def test_academics_pce_nm(self):
-        pass
+        category_id = _get_category_id("Academics")
+        self.assertEquals(category_id, "academics")
+        affi = {"grad": False,
+                "undergrad": False,
+                "nm": True,
+                "pce": True}
+        links = _get_links_by_category_and_campus(category_id,
+                                                  "seattle",
+                                                  affi)
+        self.assertEquals(len(links), 23)
 
     def test_academics_pce_grad(self):
-        pass
+        category_id = _get_category_id("Academics")
+        self.assertEquals(category_id, "academics")
+        affi = {"grad": True,
+                "undergrad": False,
+                "nm": False,
+                "pce": True}
+        links = _get_links_by_category_and_campus(category_id,
+                                                  "seattle",
+                                                  affi)
+        self.assertEquals(len(links), 23)
