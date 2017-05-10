@@ -45,7 +45,8 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=central_url,
                         title=central_title,
-                        affiliation=affiliation + "+" + pce,
+                        pce=(pce == "pce"),
+                        affiliation=affiliation,
                         category_name=category,
                         sub_category=subcategory,
                         new_tab=new_tab
@@ -57,7 +58,8 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=seattle_url,
                         title=seattle_title,
-                        affiliation=affiliation + "+" + pce,
+                        pce=(pce == "pce"),
+                        affiliation=affiliation,
                         campus=ResCategoryLink.SEATTLE,
                         category_name=category,
                         sub_category=subcategory,
@@ -70,7 +72,8 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=bothell_url,
                         title=bothell_title,
-                        affiliation=affiliation + "+" + pce,
+                        pce=(pce == "pce"),
+                        affiliation=affiliation,
                         campus=ResCategoryLink.BOTHELL,
                         category_name=category,
                         sub_category=subcategory,
@@ -83,7 +86,8 @@ class Res_Links:
                     link = ResCategoryLink(
                         url=tacoma_url,
                         title=tacoma_title,
-                        affiliation=affiliation + "+" + pce,
+                        pce=(pce == "pce"),
+                        affiliation=affiliation,
                         campus=ResCategoryLink.TACOMA,
                         category_name=category,
                         sub_category=subcategory,
