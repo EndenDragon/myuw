@@ -3,8 +3,8 @@
 <div class="card" style="position:relative;" id="medicine-pw"> 
     <div class="top-border" style="position:absolute; top:0; left:0; right:0;">&nbsp;</div> 
     <div class="med-logo"><img src="static/images/UWMedicine_Logo_RGB@2x.png" width="100px" alt="UW medicine logo"></div>
-    <h3>UW Medicine  <!--{{ card_name }}--></h3>
-    <p class="update-note">Note: Password status gets updated nightly.</p>
+    <h3>UW Medicine Account <!--{{ card_name }}--></h3>
+    
 		{{#if med_pw_expired }}
 	     <div class="pw-exp">
 		 	<span class="pw-exp-date password-alert">Password expired on {{formatDateAsDate expires_med}}.
@@ -24,8 +24,9 @@
             <div class="pw-link"><a href="https://services.uwmedicine.org/passwordportal/login.htm">Change UW Medicine password</a></div>
        </div><!-- .card-badge -->
         {{/if}}
+            <p>Note: Password status gets updated nightly.</p>
             <p>This password is for UW Medicine applications like Epic, ORCA, MINDscape, AMC network, etc.</p>
-            
+
          
 
 
