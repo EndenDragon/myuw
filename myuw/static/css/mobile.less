@@ -1145,20 +1145,26 @@ label { font-weight: normal; }
     }
     // end graduate student content card
     
-    //ACCOUNT PAGE
+//ACCOUNT PAGE
     .accounts-container {
 		 h2 { font-family: 'encode_sans_normalbold'; font-size:26px; color: #444; }    
     }
    
     // ACCOUNT PAGE CARDS
     div#medicine-pw, div#netid-pw {
+	    .top-border {border-top: 9px solid #4B2E84;}
 	    .med-logo {margin:10px 0px 5px 0px; clear: both; float: right;} 
 	    h3 {clear:both;}
+
 	    .update-note {color: #777; font-size: 95%;margin-bottom: 0px;}
-	    .pw-exp {font-size: 16px; margin-bottom:10px;}	    
-	    .pw-exp-date {color:#444;font-weight: bold;}
+    
+
+	    .pw-exp {font-size: 16px; display: block; clear: both; margin-bottom: .5em; }	
+	    .pw-exp-date-box {display:block; float:left; clear:both; margin-bottom: .5em;}    
+	    .pw-exp-date {color:#444; margin:0;}
+
 		.password-alert {color:#a94442;
-			a {text-decoration: underline;}
+			a {text-decoration: underline; font-weight: bold;}
 		}
 		.pw-link{ clear:both; margin-bottom: 10px;}
 	.card-badge {
@@ -1170,10 +1176,10 @@ label { font-weight: normal; }
                     font-weight: bold;
                 /*line-height: 35px;*/ }
                 .card-badge-action {
-                    display: block;
                     font-weight: normal;
-                    line-height: 35px;
-                    margin-top: -5px;
+                   // margin-top: -5px;
+                   padding-left: .3em;
+                    font-size: 16px;
                     a { display: block; }
                 }
 
