@@ -15,7 +15,6 @@ class ResCategoryLink(models.Model):
     url = models.CharField(max_length=150)
     title = models.CharField(max_length=150)
     affiliation = models.CharField(max_length=80, null=True)
-    order = models.PositiveSmallIntegerField(default=32767)
     pce = models.NullBooleanField()
     campus = models.CharField(max_length=8, null=True)
     category_id = models.CharField(max_length=80)
@@ -64,8 +63,8 @@ class ResCategoryLink(models.Model):
         data = {
             "title": self.title,
             "url": self.url,
-            "order": self.order,
-            "new_tab": self.new_tab
+            "new_tab": self.new_tab,
+            "id": self.id
         }
         return data
 
