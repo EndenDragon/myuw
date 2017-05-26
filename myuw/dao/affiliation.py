@@ -27,7 +27,6 @@ def get_all_affiliations(request):
     ["student"]: True if the user is currently an UW student.
     ["grad"]: True if the user is currently an UW graduate student.
     ["undergrad"]: True if the user is currently an UW undergraduate student.
-    ["nm"]: True if the user is currently an non-matriculated student.
     ["pce"]: True if the user is currently an UW PCE student.
     ["employee"]: True if the user is currently a uw employee.
     ["stud_employee"]: True if the user is currently a student employee.
@@ -64,7 +63,6 @@ def get_all_affiliations(request):
             "pce": is_pce_student(),
             "stud_employee": is_student_employee(),
             "employee": is_employee(),
-            "nm": is_nm(request),
             "fyp": is_fyp,
             "faculty": is_faculty(),
             "seattle": is_seattle_student(),

@@ -3,6 +3,7 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from myuw.dao.category_links import _get_links_by_category_and_campus, \
     _get_category_id, Res_Links
+from myuw.test import get_request_with_date, get_request_with_user
 import re
 
 
@@ -36,19 +37,25 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "studentcampuslife")
         affi = {"grad": False,
                 "undergrad": True,
-                "nm": False,
                 "pce": False}
-        links = _get_links_by_category_and_campus(category_id,
+
+        req = get_request_with_date("2013-04-15")
+        req = get_request_with_user("javerage", req)
+
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "seattle",
                                                   affi)
         self.assertEquals(len(links), 23)
 
-        links = _get_links_by_category_and_campus(category_id,
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "bothell",
                                                   affi)
         self.assertEquals(len(links), 22)
 
-        links = _get_links_by_category_and_campus(category_id,
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "tacoma",
                                                   affi)
         self.assertEquals(len(links), 22)
@@ -58,19 +65,24 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "studentcampuslife")
         affi = {"grad": True,
                 "undergrad": False,
-                "nm": False,
                 "pce": False}
-        links = _get_links_by_category_and_campus(category_id,
+
+        req = get_request_with_date("2013-04-15")
+        req = get_request_with_user("javerage", req)
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "seattle",
                                                   affi)
         self.assertEquals(len(links), 24)
 
-        links = _get_links_by_category_and_campus(category_id,
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "bothell",
                                                   affi)
         self.assertEquals(len(links), 23)
 
-        links = _get_links_by_category_and_campus(category_id,
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "tacoma",
                                                   affi)
         self.assertEquals(len(links), 23)
@@ -80,9 +92,12 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "studentcampuslife")
         affi = {"grad": False,
                 "undergrad": False,
-                "nm": False,
                 "pce": True}
-        links = _get_links_by_category_and_campus(category_id,
+
+        req = get_request_with_date("2013-04-15")
+        req = get_request_with_user("javerage", req)
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "",
                                                   affi)
         self.assertEquals(len(links), 6)
@@ -92,9 +107,12 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "academics")
         affi = {"grad": False,
                 "undergrad": True,
-                "nm": False,
                 "pce": True}
-        links = _get_links_by_category_and_campus(category_id,
+
+        req = get_request_with_date("2013-04-15")
+        req = get_request_with_user("javerage", req)
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "seattle",
                                                   affi)
         self.assertEquals(len(links), 26)
@@ -104,21 +122,27 @@ class TestCategoryLinks(TestCase):
         self.assertEquals(category_id, "academics")
         affi = {"grad": False,
                 "undergrad": False,
-                "nm": True,
                 "pce": True}
-        links = _get_links_by_category_and_campus(category_id,
+
+        req = get_request_with_date("2013-04-15")
+        req = get_request_with_user("jinter", req)
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "seattle",
                                                   affi)
-        self.assertEquals(len(links), 23)
+        self.assertEquals(len(links), 24)
 
     def test_academics_pce_grad(self):
         category_id = _get_category_id("Academics")
         self.assertEquals(category_id, "academics")
         affi = {"grad": True,
                 "undergrad": False,
-                "nm": False,
                 "pce": True}
-        links = _get_links_by_category_and_campus(category_id,
+
+        req = get_request_with_date("2013-04-15")
+        req = get_request_with_user("javerage", req)
+        links = _get_links_by_category_and_campus(req,
+                                                  category_id,
                                                   "seattle",
                                                   affi)
         self.assertEquals(len(links), 23)
