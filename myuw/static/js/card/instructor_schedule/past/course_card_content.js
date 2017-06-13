@@ -9,7 +9,7 @@ var InstructorPastCourseCardContent = {
         var raw = template(c_section);
         $('#instructor_course_card_content' + index).html(raw);
 
-        InstructorPastCourseSchePanel.render(c_section);
+        InstructorCourseSchePanel.render(c_section);
         InstructorPastCourseResourcePanel.render(c_section);
 
         if (c_section.grade_submission_delegates) {
