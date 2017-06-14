@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.conf import settings
 from django.test.utils import override_settings
 from uw_sws.models import Section, Term
-from restclients.iasystem.evaluation import get_evaluation_by_id
+from uw_iasystem.evaluation import get_evaluation_by_id
 from myuw.dao.iasystem import json_for_evaluation,\
     _get_evaluations_by_section_and_student, summer_term_overlaped
 from myuw.dao.schedule import _get_schedule
